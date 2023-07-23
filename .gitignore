@@ -13,7 +13,7 @@ __pycache__/
 /IA/ia
 waste/
 *parameters.py
-test.py
+test.ipynb
 soil_output/
 logs.log
 *.DS_STORE
