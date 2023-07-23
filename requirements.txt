@@ -1,0 +1,5 @@
+python==3.9.x
+anytree==2.8.0
+soil==0.20.7
+scipy==1.8.0
+numpy==1.24.3

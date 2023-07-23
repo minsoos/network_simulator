@@ -1,0 +1,19 @@
+# --------------------------------------------
+# Python
+# --------------------------------------------
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*__pycache__/
+*.py[cod]
+*$py.class
+*.pdf
+*.yml
+*.sqlite
+/IA/ia
+waste/
+*parameters.py
+test.py
+soil_output/
+logs.log
+*.DS_STORE
