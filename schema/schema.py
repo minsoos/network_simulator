@@ -11,11 +11,8 @@ logging.basicConfig(level=logging.WARNING, filename='logs.log',
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logging.warning('This is a depuration message')
 
-prob_response_global = {"dumb": {"support": 0.4, "deny": 0.3, "question": 0, "comment": 0.3},
-                        "herd": {"support": 0.25, "deny": 0.25, "question": 0.25, "comment": 0.25},
-                        "wise": {"support": 0.2, "deny": 0.2, "question": 0.3, "comment": 0.3}
-                        }
 
+RESPONSES = ["dumb", "herd", "wise"]
 
 class NewsEnvironmentAgent(Environment):
     def __init__(self, name=None, network_agents=None, environment_agents=None, states=None, default_state=None, interval=1,
@@ -152,13 +149,19 @@ class DumbViewer(FSM):
             self['parent_id'] = 0
 
     def find_response(self):
-        prob_response_self = prob_response_global[self["type"]].copy()
+        type = self["type"]
+        prob_response_self = {}
+        for response in RESPONSES:
+            name_prob = f"prob_{type}_{response}"
+            prob = self[name_prob]
+            prob_response_self[response] = prob
+
         if self["stance"] == "against":
             prob_response_self["support"] = 0
         elif self["stance"] == "agree":
             prob_response_self["question"] = 0
             prob_response_self["deny"] = 0
-        self["stance"] = self["stance"]
+
         choiced = random.choices(
             list(prob_response_self.keys()), list(prob_response_self.values()))
         if choiced[0] == None:

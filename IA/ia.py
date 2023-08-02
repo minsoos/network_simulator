@@ -2,10 +2,11 @@ import openai
 import os
 
 
-def send_prompt(prompt, engine="gpt-3.5-turbo", temp=0.5, max_tokens=100, top_p=1, frequency_penalty=0, presence_penalty=0):
+def send_prompt(instructions, prompt, engine="gpt-3.5-turbo", temp=0.5, max_tokens=100, top_p=1, frequency_penalty=0, presence_penalty=0):
     respuesta = openai.ChatCompletion.create(
         model=engine,
         messages=[
+            {'role':'system', 'content':instructions},
             {'role': 'user', 'content': prompt}
         ],
         temperature=temp,
@@ -18,4 +19,4 @@ def send_prompt(prompt, engine="gpt-3.5-turbo", temp=0.5, max_tokens=100, top_p=
 
 
 if __name__ == "__main__":
-    main()
+    pass
