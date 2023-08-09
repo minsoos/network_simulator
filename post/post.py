@@ -2,31 +2,30 @@ from anytree import Node
 
 
 class Post(Node):
-    def __init__(self, name, step, parent=None, children=None, owner=None, message='', response=None,
-                 stance=None, repost=False, cause=None, method=None, post_template=None,
-                 reply_template=None, instructions_template=None, news=None, **kwargs):
+    def __init__(self, name, step, parent=None, children=None, owner=None, message='', news=None,
+                 post_template=None, reply_template=None, instructions_template=None,
+                 **kwargs):
 
         super().__init__(name, parent, children, **kwargs)
         self.step = step
         self.owner = owner
         self.message = message
-        self.stance = stance
-        self.response = response
-        self.repost = repost
-        self.cause = cause
-        self.method = method
         self.post_template = post_template
         self.reply_template = reply_template
         self.news = news
         self.instructions_template = instructions_template
 
+        for attribute in kwargs:
+            self.__dict__[attribute] = kwargs[attribute]
+        
+
     def get_prompt(self, language, min_caract, max_caract, user_description):
         need_reply = True
         if self.name == 0:
             need_reply = False
-        else:
-            if self.parent.name == 0:
-                need_reply = False
+        elif self.parent.name == 0:
+            need_reply = False
+            
         if need_reply:
             prompt = self.create_reply(language, min_caract, max_caract, user_description)
         else:

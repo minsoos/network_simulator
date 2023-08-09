@@ -16,21 +16,16 @@ def get_raw_info(cursor):
 
 
 
-def pivot_raw_table(cursor):
-    cursor.execute(
-        '''
+def pivot_raw_table(cursor, attributes):
+    initial_str = '''
     CREATE TABLE pivoted_table
     AS SELECT
         dict_id,
         t_step,
-        MAX(CASE WHEN key = 'state_id' THEN value END) as state,
-        MAX(CASE WHEN key = 'cause' THEN value END) as cause,
-        MAX(CASE WHEN key = 'method' THEN value END) as method,
-        MAX(CASE WHEN key = 'response' THEN value END) as response,
-        MAX(CASE WHEN key = 'stance' THEN value END) as stance,
-        MAX(CASE WHEN key = 'repost' THEN value END) as repost,
         CAST(MAX(CASE WHEN key = 'id_message' THEN value END) AS INT) as id_message,
-        MAX(CASE WHEN key = 'parent_id' THEN value END) as parent_id
+        MAX(CASE WHEN key = 'parent_id' THEN value END) as parent_id,
+        MAX(CASE WHEN key = 'state_id' THEN value END) as state,'''
+    final_str = '''
     FROM history
     WHERE t_step != 0
     AND dict_id != 'env'
@@ -38,7 +33,12 @@ def pivot_raw_table(cursor):
     AND value != 'died'
     GROUP BY dict_id,t_step
     ORDER BY id_message;
-    ''')
+    '''
+    attr_str = ""
+    for attribute in attributes:
+        attr_str += "\n" + " "*8 + f"MAX(CASE WHEN key = '{attribute}' THEN value END) as {attribute},"
+    attr_str = attr_str.strip(",")
+    cursor.execute(initial_str+attr_str+final_str)
 
 
 def select_pivoted_table(cursor):
@@ -47,10 +47,10 @@ def select_pivoted_table(cursor):
     data = cursor.fetchall()
     return data
 
-def get_pivoted_data(analysis_path, sql_table_path):
+def get_pivoted_data(analysis_path, sql_table_path, attributes):
     cur = get_cursor(analysis_path=analysis_path,
                      sql_table_path=sql_table_path)
-    pivot_raw_table(cur)
+    pivot_raw_table(cur, attributes)
     data = select_pivoted_table(cur)
     cur.execute('DROP TABLE pivoted_table')
     return data
