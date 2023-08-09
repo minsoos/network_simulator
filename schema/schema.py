@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.WARNING, filename='logs.log',
 logging.warning('This is a depuration message')
 
 
-RESPONSES = ["dumb", "herd", "wise"]
+RESPONSES = ["support", "deny", "question", "comment"]
 
 class NewsEnvironmentAgent(Environment):
     def __init__(self, name=None, network_agents=None, environment_agents=None, states=None, default_state=None, interval=1,
@@ -153,7 +153,7 @@ class DumbViewer(FSM):
         prob_response_self = {}
         for response in RESPONSES:
             name_prob = f"prob_{type}_{response}"
-            prob = self[name_prob]
+            prob = self.env[name_prob]
             prob_response_self[response] = prob
 
         if self["stance"] == "against":

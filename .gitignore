@@ -15,6 +15,7 @@ waste/
 *parameters.py
 *post_process.py
 test_private.ipynb
+test_private.py
 soil_output/
 result/
 logs.log
