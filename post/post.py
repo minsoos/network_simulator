@@ -2,11 +2,12 @@ from anytree import Node
 
 
 class Post(Node):
-    def __init__(self, name, parent=None, children=None, owner=None, message='', response=None,
+    def __init__(self, name, step, parent=None, children=None, owner=None, message='', response=None,
                  stance=None, repost=False, cause=None, method=None, post_template=None,
                  reply_template=None, instructions_template=None, news=None, **kwargs):
 
         super().__init__(name, parent, children, **kwargs)
+        self.step = step
         self.owner = owner
         self.message = message
         self.stance = stance
