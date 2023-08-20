@@ -21,9 +21,11 @@ class Post(Node):
 
     def get_prompt(self, language, min_caract, max_caract, user_description):
         need_reply = True
+        parent_node = self.search_to_reply()
         if self.name == 0:
             need_reply = False
-        elif self.parent.name == 0:
+            raise ValueError("The root node should't request prompt")
+        elif parent_node.name == 0:
             need_reply = False
             
         if need_reply:
@@ -33,16 +35,23 @@ class Post(Node):
         return prompt
 
     def search_to_reply(self):
+        if self.name == 0:
+            return self
         if not self.repost:
-            return self.message
+            return self
         return self.parent.search_to_reply()
+    
+    def search_to_reply_message(self):
+        return self.search_to_reply().message
 
     def create_reply(self, language, min_caract, max_caract,
                      user_description='Average Social Media User'):
-        to_reply = self.parent.search_to_reply()
+        to_reply = self.parent.search_to_reply_message()
         stance = self.stance
         if stance == 'against':
             stance = 'are against'
+        if stance == 'neutral':
+            stance = 'are neutral'
         response = self.response
         features = ['casual', 'informal', 'conversational']
         included = ['statistics', 'personal experience', 'fun facts']

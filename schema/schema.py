@@ -111,8 +111,9 @@ class DumbViewer(FSM):
         self.assign_id_message()
         self.assign_id_message_parent(infecter)
         #
-        repost = prob(self.env["prob_repost"]
-                       ) if first_time and infecter != self else False
+        repost = prob(self.env["prob_repost"]) if first_time else False
+        # and infecter != self ## To block repost for root
+
         response = self.find_response()
         self.assign_infect_attrs(first_time, repost, response, infecter)
 
@@ -121,15 +122,17 @@ class DumbViewer(FSM):
             self['method'] = 'backsliding'
             self['response'] = self['response']
             self['stance'] = self['stance']
-            self['repost'] = 'false'
+            self['repost'] = repost
             return
         if repost:
-            self['repost'] = "true"
+            self['repost'] = True
             self['response'] = 'support'
+            self['stance'] = 'agree'
             return
-        self["repost"] = "false"
+        self['repost'] = repost
         self['response'] = response
         self["stance"] = self["stance"]
+
         if self == infecter:
             self['method'] = 'tv'
         else:
@@ -161,6 +164,10 @@ class DumbViewer(FSM):
         elif self["stance"] == "agree":
             prob_response_self["question"] = 0
             prob_response_self["deny"] = 0
+        elif self["stance"] == "neutral":
+            prob_response_self["agree"] = 0
+            prob_response_self["deny"] = 0
+
 
         choiced = random.choices(
             list(prob_response_self.keys()), list(prob_response_self.values()))
@@ -203,13 +210,14 @@ class WiseViewer(HerdViewer):
         for neighbor in self.get_neighboring_agents(state_id=self.infected.id):
             if prob(prob_cure):
                 try:
-                    neighbor.cure(self)
+                    if self["stance"] != "neutral":
+                        neighbor.cure(self)
                 except AttributeError:
                     self.debug('Viewer {} cannot be cured'.format(neighbor.id))
         return
 
     def cure(self, doctor):
-        self['repost'] = "false"
+        self['repost'] = False
 
         if self["stance"] == "against":
             self["stance"] = "agree"
