@@ -41,6 +41,8 @@ class Post(Node):
                      user_description='Average Social Media User'):
         to_reply = self.parent.search_to_reply()
         stance = self.stance
+        if stance == 'against':
+            stance = 'are against'
         response = self.response
         features = ['casual', 'informal', 'conversational']
         included = ['statistics', 'personal experience', 'fun facts']
@@ -57,6 +59,8 @@ class Post(Node):
     def create_post(self, language, min_caract, max_caract,
                     user_description='Average Social Media User'):
         stance = self.stance
+        if stance == 'agree':
+            stance = 'are agree'
         response = self.response
         features = ['casual', 'informative', 'conversational']
         included = ['statistics', 'personal experience', 'fun facts']
