@@ -2,14 +2,15 @@ from anytree import Node
 
 
 class Post(Node):
-    def __init__(self, name, step, parent=None, children=None, owner=None, message='', news=None,
-                 post_template=None, reply_template=None, instructions_template=None,
+    def __init__(self, name, step, parent=None, children=None, owner=None, message='', type_agent='', 
+                 news=None, post_template=None, reply_template=None, instructions_template=None,
                  **kwargs):
 
         super().__init__(name, parent, children, **kwargs)
         self.step = step
         self.owner = owner
         self.message = message
+        self.type_agent = type_agent
         self.post_template = post_template
         self.reply_template = reply_template
         self.news = news

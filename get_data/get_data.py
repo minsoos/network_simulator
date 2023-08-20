@@ -54,3 +54,16 @@ def get_pivoted_data(analysis_path, sql_table_path, attributes):
     data = select_pivoted_table(cur)
     cur.execute('DROP TABLE pivoted_table')
     return data
+
+def _get_types_agents(cursor):
+    cursor.execute(
+        "SELECT dict_id, value FROM history WHERE key='type'")
+    data = cursor.fetchall()
+    return data
+
+def get_type_agents(analysis_path, sql_table_path):
+    cur = get_cursor(analysis_path, sql_table_path)
+    data = _get_types_agents(cur)
+    data = list(map(lambda x: (int(x[0]), x[1]), data))
+    dict_i = dict(data)
+    return dict_i
