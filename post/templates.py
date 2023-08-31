@@ -13,7 +13,7 @@ Please respond directly to my query without adding any extra information or para
 '''
 
 POST_TEMPLATE = '''
-Please write a post between {min_caract} and {max_caract} characters about the following news: "{news}". 
+Please write a post between {min_caract} and {max_caract} characters replying to and about the following news: "{news}". 
 '''
 
 REPLY_TEMPLATE = '''
