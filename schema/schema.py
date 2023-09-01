@@ -210,13 +210,17 @@ class WiseViewer(HerdViewer):
         for neighbor in self.get_neighboring_agents(state_id=self.infected.id):
             if prob(prob_cure):
                 try:
-                    if self["stance"] != "neutral":
+                    if neighbor["type"]=="wise":
                         neighbor.cure(self)
                 except AttributeError:
                     self.debug('Viewer {} cannot be cured'.format(neighbor.id))
         return
 
     def cure(self, doctor):
+        if self["stance"] == "neutral":
+            return
+        if self != doctor and self["stance"] == doctor["stance"]:
+            return
         self['repost'] = False
 
         if self["stance"] == "against":
