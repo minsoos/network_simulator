@@ -15,7 +15,7 @@ Posteriormente, un agente empieza a ser susceptible cuando el tiempo de la red e
 
 En tercer lugar, el agente puede ser susceptible a contagiarse directamente por la noticia, en el caso que tenga activo su parámetro ```has_tv```, si es así, se contagia con probabilidad ```prob_tv_spread```. También puede empezar a ser contagiado por los nodos infectados con los que está conectado, o sea, sus vecinos en la red; en este caso se contagia con probabilidad ```prob_neighbor_spread```. Esto se modela en el estado ```neutral```
 
-Ahora, cuando el agente ya fue contagiado, adquiere otro comportamiento. En este caso, el agente intenta contagiar a todos sus vecinos con probabilidad ```prob_neighbor_spread```. Por último, se recontagia con probabilidad ```prob_backsliding```. Por último, el nodo muere con probabilidad ```prob_died```.
+Ahora, cuando el agente ya fue contagiado, adquiere otro comportamiento. En este caso, el agente intenta contagiar a todos sus vecinos con probabilidad ```prob_neighbor_spread```. Por último, se recontagia con probabilidad ```prob_backsliding```. Por último, el nodo muere con probabilidad ```prob_died```. Es importante notar que el agente siempre 'contagia' con su último mensaje.
 
 En el caso de que un agente muera, este deja de participar en la red. Esto se modela en el estado ```died```
 
@@ -43,8 +43,15 @@ La red está generada por un método llamado Barabassi-Albert, que recibe los pa
 - ```repost```: Indica si un post es una mención del anterior o es un post 'original'. La probabilidad de repost se entrega en el input. Puede ser 0 o 1.
 - ```method```: Indica el método por el cual se produjo el contagio. Puede ser ```backsliding``` (si recayó en el contagio), ```tv``` (si fue por el nodo raíz) o ```friend``` (si se contagió por un vecino).
 - ```cause```: Indica el causante de un contagio, en el caso en que sea un vecino, puede ser cualquier id dentro de los id's de agentes de red.
-- ```parent_id```: Indica el id de la interacción de la cual se desprende la interacción. 
-  
+- ```parent_id```: Indica el id de la interacción de la cual se desprende la interacción.
+
+## Restricciones de interacciones
+- Si el method de una interacción es ```backsliding``` el agente mantendrá su stance y response.
+- Si una interacción es ```repost```, el response será ````support```` y el stance ````agree````
+- Si el stance es ````against````, la probabilidad de response de ```support``` será 0
+- Si el stance es ````agree````, la probabilidad de response de ```question``` y ```deny``` serán 0
+- Si el stance es ````neutral````, la probabilidad de response de ```agree``` y ```deny``` serán 0
+
 ## Parámetros a configurar en la simulación
 1. Parámetros por defecto de los agentes: Estos son los parámetros que tendrán todos los agentes, a menos que en alguno especifiques un cambio.
 2. Configuración de los agentes: Acá se configura cada una de las clases de agentes que se crearán. Cada una tiene pesos, ```weight```, que indican qué tan probable es que aparezcan en la red respecto al resto. Además, se pueden configurar los parámetros por defecto que se deseen para esa clase de agente en particular.Por último, se debe agregar el tipo adecuado correctamente en ```type```.
