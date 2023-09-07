@@ -27,7 +27,7 @@ Adquiere el comportamiento de un agente Dumb, modificando:
 - Pondera la probabilidad de infectarse por un vecino por la cantidad de vecinos infectados que tiene. La probabilidad de infectarse es menor que uno Dumb, pero es igual en el caso en que todos sus vecinos están contagiados.
 #### WiseViewer:
 Adquiere el comportamiento de un agente Herd, modificando:
-- Añade la posibilidad de curarse, que significa cambiar de opinión. También puede intentar a curar a otros con probabilidad ```prob_neighbor_cure``` que sean de tipo wise y que tengan una stance distinta a él (no neutral). Esto se modela en el estado ```cured```
+- Añade la posibilidad de curarse, que significa cambiar a la opinión opuesta (response y stance). También puede intentar a curar a otros con probabilidad ```prob_neighbor_cure``` que sean de tipo wise y que tengan una stance distinta a él (no neutral). Esto se modela en el estado ```cured```
 - Puede curarse a sí mismo del estado infectado, lo que está modelado por la probabilidad ```prob_neighbor_cure```*```vecinos_curados```/```vecinos_infectados```. Fuera de esto, el agente adopta el comportamiento de un agente Herd. Esto se modela en el estado ```infected```
 
 ## Generación de conexiones de la red
