@@ -108,8 +108,9 @@ class DumbViewer(FSM):
         # If we are successful:
         self.set_state(self.infected)
         self.last_infection = self.now
+        self.assign_id_message_parent(infecter, first_time)
         self.assign_id_message()
-        self.assign_id_message_parent(infecter)
+
         #
         repost = prob(self.env["prob_repost"]) if first_time else False
         # and infecter != self ## To block repost for root
@@ -145,8 +146,8 @@ class DumbViewer(FSM):
             f"{self['id']} ha enviado un mensaje con id {self['id_message']}. Se infectó por el método {self['method']} en el tiempo {self.env.now}")
         self.env["id_message"] += 1
 
-    def assign_id_message_parent(self, infecter):
-        if infecter != self:
+    def assign_id_message_parent(self, infecter, first_time):
+        if infecter != self or not first_time:
             self['parent_id'] = infecter['id_message']
         else:
             self['parent_id'] = 0
@@ -242,7 +243,7 @@ class WiseViewer(HerdViewer):
             raise Exception("Unrecognized response")
         self.assign_cure_attrs(doctor)
         self.assign_id_message()
-        self.assign_id_message_parent(doctor)
+        self.assign_id_message_parent(doctor, first_time=True)
         self.set_state(self.cured)
         return
 
