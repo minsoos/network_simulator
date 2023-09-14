@@ -38,8 +38,8 @@ La red está generada por un método llamado Barabassi-Albert, que recibe los pa
 ## Características de una interacción
 - ```id_message```: Es el id único de la interacción.
 - ```state```: Indica el estado actual en el que se produjo la interacción.
-- ```stance```: Indica si el agente está a favor o en contra de la noticia. Puede cambiar dentro de la simulación, pero cada agente tiene la configuración que se entrega como input, y que está dada por la simulación del grafo.
-- ```response```: Indica el tipo de comentario que hace el agente. Puede ser ```support```, ```deny```, ```question``` o ```comment```. Las probabilidades dependen de los pesos que se entregan como input, pero dados ciertos stance, puede bloquearse la probabilidad de alguna.
+- ```stance```: Indica si el agente está a favor (```agree```) o en contra (```against```) de la noticia. Puede cambiar dentro de la simulación, pero cada agente tiene la configuración que se entrega como input, y que está dada por la simulación del grafo. En la literatura, este se conoce como 'polarización afectiva.'
+- ```response```: Indica el tipo de comentario que hace el agente. Puede ser ```support```, ```deny```, ```question``` o ```comment```. Las probabilidades dependen de los pesos que se entregan como input, pero dados ciertos stance, puede bloquearse la probabilidad de alguna. En la literatura el response es lo que se conoce como 'stance d,e veracidad'
 - ```repost```: Indica si un post es una mención del anterior o es un post 'original'. La probabilidad de repost se entrega en el input. Puede ser 0 o 1.
 - ```method```: Indica el método por el cual se produjo el contagio. Puede ser ```backsliding``` (si recayó en el contagio), ```tv``` (si fue por el nodo raíz) o ```friend``` (si se contagió por un vecino).
 - ```cause```: Indica el causante de un contagio, en el caso en que sea un vecino, puede ser cualquier id dentro de los id's de agentes de red.
@@ -50,7 +50,7 @@ La red está generada por un método llamado Barabassi-Albert, que recibe los pa
 - Si una interacción es ```repost```, el response será ````support```` y el stance ````agree````
 - Si el stance es ````against````, la probabilidad de response de ```support``` será 0
 - Si el stance es ````agree````, la probabilidad de response de ```question``` y ```deny``` serán 0
-- Si el stance es ````neutral````, la probabilidad de response de ```agree``` y ```deny``` serán 0
+- Si el stance es ````neutral````, la probabilidad de response de ```support``` y ```deny``` serán 0
 
 ## Parámetros a configurar en la simulación
 1. Parámetros por defecto de los agentes: Estos son los parámetros que tendrán todos los agentes, a menos que en alguno especifiques un cambio.
@@ -63,7 +63,7 @@ La red está generada por un método llamado Barabassi-Albert, que recibe los pa
 
 Se deben ejecutar las celdas del archivo ```run_and_prompts.ipynb```. Las celdas ya están listas, pero lo que se hace básicamente es: 
 1. Crear el archivo ```.yml``` que indica los parámetros de la simulación.
-2. Ejecurar el comando de soil en la consola, que ejecutará la simulación.
+2. Ejecutar el comando de soil en la consola, que ejecutará la simulación.
 
 ## Crear conversación
 1. Se obtienen los datos del output entregado por Soil.

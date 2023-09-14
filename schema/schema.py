@@ -167,7 +167,7 @@ class DumbViewer(FSM):
             prob_response_self["deny"] = 0
         elif self["stance"] == "neutral":
             prob_response_self["agree"] = 0
-            prob_response_self["deny"] = 0
+            prob_response_self["support"] = 0
 
 
         choiced = random.choices(
