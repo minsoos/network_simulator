@@ -37,8 +37,9 @@ def pivot_raw_table(cursor, attributes):
     attr_str = ""
     for attribute in attributes:
         attr_str += "\n" + " "*8 + f"MAX(CASE WHEN key = '{attribute}' THEN value END) as {attribute},"
-    attr_str = attr_str.strip(",")
-    cursor.execute(initial_str+attr_str+final_str)
+    select_str = initial_str + attr_str
+    select_str = select_str.strip(",")
+    cursor.execute(select_str+final_str)
 
 
 def select_pivoted_table(cursor):
