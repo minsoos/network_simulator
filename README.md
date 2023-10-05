@@ -54,7 +54,7 @@ La red de conexiones entre usuarios está generada por un método llamado Baraba
 ## Parámetros a configurar en la simulación
 1. Parámetros por defecto de los agentes: Estos son los parámetros que tendrán todos los agentes, a menos que en alguno especifiques un cambio.
 2. Configuración de los agentes: Acá se configura cada una de las clases de agentes que se crearán. Cada una tiene pesos, ```weight```, que indican qué tan probable es que aparezcan en la red social respecto al resto. Además, se pueden configurar los parámetros por defecto que se deseen para esa clase de agente en particular. Por último, se debe agregar el tipo adecuado correctamente en ```type```.
-3. Configuración del agente de ambiente: Acá se debe configurar cada una de las probabilidades de contagio, los parámetros de la normal de la normal de conexión, los intervalos de tiempo y tanto los parámetros del generados de red social como el método mismo.
+3. Configuración del agente de ambiente: Acá se debe configurar cada una de las probabilidades de contagio, los parámetros de la normal de la normal de conexión, los intervalos de tiempo y tanto los parámetros del generados de red social como el método mismo. Nota: Por defecto el simulador siempre hace un step menos que el que se configura
 4. Probabilidad de responses: Se debe agregar en un diccionario los pesos de cada response para cada tipo de agente (Notar que no deben sumar 1, son solo pesos).
 
 
