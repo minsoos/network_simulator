@@ -39,7 +39,7 @@ La red de conexiones entre usuarios está generada por un método llamado Baraba
 2. ```state```: Indica el estado actual en el que se produjo la interacción.
 3. ```stance```: Indica si el agente está a favor (```agree```) o en contra (```against```) de la noticia. Puede cambiar dentro de la simulación, pero cada agente tiene la configuración que se entrega como input, y que está dada por la simulación del grafo social. En la literatura, este se conoce como 'polarización afectiva.'
 4. ```response```: Indica el tipo de comentario que hace el agente. Puede ser ```support```, ```deny```, ```question``` o ```comment```. Las probabilidades dependen de los pesos que se entregan como input, pero dados ciertos stance, puede bloquearse la probabilidad de alguna. En la literatura el response es lo que se conoce como 'stance de veracidad'.
-5. ```repost```: Indica si un post es una mención del anterior o es un post 'original'. La probabilidad de repost se entrega en el input. Puede ser 0 o 1.
+5. ```repost```: Indica si un post es una mención del anterior o es un post 'original'. La probabilidad de repost se entrega en el input. Puede ser 0 o 1. Además no rige para la interacción de backsliding
 6. ```method```: Indica el método por el cual se produjo el contagio. Puede ser ```backsliding``` (si recayó en el contagio), ```tv``` (si fue por el nodo raíz) o ```friend``` (si se contagió por un vecino).
 7. ```cause```: Indica el causante de un contagio, en el caso en que sea un vecino, puede ser cualquier id dentro de los id's de agentes de red social.
 8. ```parent_id```: Indica el id de la interacción de la cual se desprende la interacción.
