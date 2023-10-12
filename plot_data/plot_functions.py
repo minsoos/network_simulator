@@ -44,6 +44,7 @@ def responses_progress(data, count_repost):
                 continue
 
         if dato[keys["state"]] == "cured":
+            n_responses[ dato[keys["response"]] ] +=1
             if dato[keys["response"]] == "deny":
                 n_responses["support"] -= 1
             elif dato[keys["response"]] == "support":
@@ -52,13 +53,17 @@ def responses_progress(data, count_repost):
                 n_responses["comment"] -= 1
             elif dato[keys["response"]] == "comment":
                 n_responses["question"] -= 1
+            else:
+                print("ERROR IN cured_state plot_functions.py")
         elif dato[keys["state"]] == "died":
             pass
-        else:
+        elif dato[keys["state"]] in ["backsliding", "infected"]:
             response_i = dato[keys["response"]]
             if response_i == None:
                 print(dato)
             n_responses[response_i] += 1
+        else:
+            print("ERROR IN plot_functions.py")
     # print(step)
     # print(n_responses)
     # print("real:", len(responses_progress))
