@@ -68,8 +68,6 @@ class DumbViewer(FSM):
         '''
         if self.last_infection == self.now:
             return
-        logging.warning(
-            f"{self['id']} está en el estado infectar en el step {self.env.now}")
         for neighbor in self.get_neighboring_agents(state_id=self.neutral.id):
             neighbor.try_infect(infecter=self, first_time=True)
 
@@ -104,6 +102,14 @@ class DumbViewer(FSM):
 
         if not successful_infect:
             return
+
+        if not first_time:
+            possible_agents = self.get_agents(state_id=self.infected.id)
+            if len(possible_agents) == 0:
+                logging.warning(f"{self['id']} tried to backsliding, but there's any infected agent")
+                return 
+            infecter = random.choices(possible_agents)[0]
+            logging.warning(f"{self['id']} backslided, replying to {infecter['id']}")
 
         # If we are successful:
         self.set_state(self.infected)
@@ -142,8 +148,6 @@ class DumbViewer(FSM):
 
     def assign_id_message(self):
         self["id_message"] = self.env["id_message"]
-        logging.warning(
-            f"{self['id']} ha enviado un mensaje con id {self['id_message']}. Se infectó por el método {self['method']} en el tiempo {self.env.now}")
         self.env["id_message"] += 1
 
     def assign_id_message_parent(self, infecter, first_time):
