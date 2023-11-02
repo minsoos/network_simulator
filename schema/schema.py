@@ -44,6 +44,7 @@ class DumbViewer(FSM):
         '''
         self.set_state(self.no_susceptible)
         self.last_infection = 0
+        self.degree_beg = self.count_neighboring_agents()
 
     @state
     def no_susceptible(self):
@@ -108,7 +109,8 @@ class DumbViewer(FSM):
             if len(possible_agents) == 0:
                 logging.warning(f"{self['id']} tried to backsliding, but there's any infected agent")
                 return 
-            infecter = random.choices(possible_agents)[0]
+            weights_infect = [agent_i.degree_beg for agent_i in possible_agents]
+            infecter = random.choices(possible_agents, weights_infect)[0]
             logging.warning(f"{self['id']} backslided, replying to {infecter['id']}")
 
         # If we are successful:

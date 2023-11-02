@@ -19,5 +19,6 @@ test_private.ipynb
 test_private.py
 soil_output/
 result/
+*try_run.ipynb
 logs.log
 *.DS_STORE
