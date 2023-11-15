@@ -8,7 +8,7 @@ class Post(Node):
 
         super().__init__(name, parent, children, **kwargs)
         self.step = step
-        self.owner = owner
+        self.owner = owner+1 if type(owner) == int else owner
         self.message = message
         self.type_agent = type_agent
         self.post_template = post_template

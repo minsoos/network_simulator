@@ -15,7 +15,7 @@ Posteriormente, un agente empieza a ser susceptible cuando el tiempo de la red s
 
 En tercer lugar, el agente puede ser susceptible a contagiarse directamente por la noticia, en el caso que tenga activo su parámetro ```has_tv```, si es así, se contagia con probabilidad ```prob_tv_spread```. También puede empezar a ser contagiado por los nodos infectados con los que está conectado, o sea, sus vecinos en la red social; en este caso se contagia con probabilidad ```prob_neighbor_spread```. Esto se modela en el estado ```neutral```.
 
-Ahora, cuando el agente ya fue contagiado, adquiere otro comportamiento. En este caso, el agente intenta contagiar a todos sus vecinos con probabilidad ```prob_neighbor_spread```. Por último, se recontagia con probabilidad ```prob_backsliding```, esto último significa que el nodo vuelve a participar en la red, y en este caso, obtiene uniformemente un nodo infectado para responderle, aunque este último no haya sido el que alcanzó al primero. Por último, el nodo muere con probabilidad ```prob_died```. Es importante notar que el agente siempre 'contagia' con su último mensaje.
+Ahora, cuando el agente ya fue contagiado, adquiere otro comportamiento. En este caso, el agente intenta contagiar a todos sus vecinos con probabilidad ```prob_neighbor_spread```. También, se recontagia con probabilidad ```prob_backsliding```, esto último significa que el nodo vuelve a participar en la red, y en este caso, muestrea un nodo infectado para responderle (usando como pesos el grado del nodo en la red social), aunque este último no sea vecino del nodo. Por último, el nodo muere con probabilidad ```prob_died```. Es importante notar que el agente siempre 'contagia' con su último mensaje, o sea, todas las respuestas son dirigidas a su último mensaje.
 
 En el caso de que un agente muera, este deja de participar en la red social. Esto se modela en el estado ```died```.
 
@@ -35,14 +35,14 @@ La red de conexiones entre usuarios está generada por un método llamado Baraba
 2. ```m``` es la cantidad de aristas que se intentaran conectar por cada agente, usando como pesos de la probabilidad de conexión los grados de los otros nodos. (Para más información revisar método de Barabassi-Albert).
 
 ## Características de una interacción
-1. ```id_message```: Es el id único de la interacción.
+1. ```id_message```: Es el id único de la interacción. Va entre 1 y cantidad de interacciones.
 2. ```state```: Indica el estado actual en el que se produjo la interacción.
 3. ```stance```: Indica si el agente está a favor (```agree```) o en contra (```against```) de la noticia. Puede cambiar dentro de la simulación, pero cada agente tiene la configuración que se entrega como input, y que está dada por la simulación del grafo social. En la literatura, este se conoce como 'polarización afectiva.'
 4. ```response```: Indica el tipo de comentario que hace el agente. Puede ser ```support```, ```deny```, ```question``` o ```comment```. Las probabilidades dependen de los pesos que se entregan como input, pero dados ciertos stance, puede bloquearse la probabilidad de alguna. En la literatura el response es lo que se conoce como 'stance de veracidad'.
 5. ```repost```: Indica si un post es una mención del anterior o es un post 'original'. La probabilidad de repost se entrega en el input. Puede ser 0 o 1. Además no rige para la interacción de backsliding
 6. ```method```: Indica el método por el cual se produjo el contagio. Puede ser ```backsliding``` (si recayó en el contagio), ```tv``` (si fue por el nodo raíz) o ```friend``` (si se contagió por un vecino).
-7. ```cause```: Indica el causante de un contagio, en el caso en que sea un vecino, puede ser cualquier id dentro de los id's de agentes de red social.
-8. ```parent_id```: Indica el id de la interacción de la cual se desprende la interacción.
+7. ```cause```: Indica el causante de un contagio, en el caso en que sea un vecino, puede ser cualquier id dentro de los id's de agentes de red social. Va entre 1 y ```n```.
+8. ```parent_id```: Indica el id de la interacción de la cual se desprende la interacción. Va entre 1 y cantidad de interacciones.
 
 ## Restricciones de interacciones
 1. Si el method de una interacción es ```backsliding``` el agente mantendrá su stance y response.
