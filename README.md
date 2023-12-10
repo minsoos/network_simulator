@@ -11,7 +11,7 @@ Los agentes de red social modelan individuos autónomos de la red social. Estos 
 
 En el tiempo 0, ningún agente puede interactuar en la red social. Esto se modela en el estado ```time_0```.
 
-Posteriormente, un agente empieza a ser susceptible cuando el tiempo de la red social es mayor que su tiempo de conexión. Esto se modela en el estado ```no_susceptible```.
+Posteriormente, un agente empieza a ser susceptible cuando el tiempo de la red social es mayor que su tiempo de conexión. Esto se modela en el estado ```susceptible```.
 
 En tercer lugar, el agente puede ser susceptible a contagiarse directamente por la noticia, en el caso que tenga activo su parámetro ```has_tv```, si es así, se contagia con probabilidad ```prob_tv_spread```. También puede empezar a ser contagiado por los nodos infectados con los que está conectado, o sea, sus vecinos en la red social; en este caso se contagia con probabilidad ```prob_neighbor_spread```. Esto se modela en el estado ```neutral```.
 
