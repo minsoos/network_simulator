@@ -11,13 +11,13 @@ Los agentes de red social modelan individuos autónomos de la red social. Estos 
 
 En el tiempo 0, ningún agente puede interactuar en la red social. Esto se modela en el estado ```time_0```.
 
-Posteriormente, un agente empieza a ser susceptible cuando el tiempo de la red social es mayor que su tiempo de conexión. Esto se modela en el estado ```susceptible```.
+Posteriormente, un agente empieza a ser susceptible cuando el tiempo de la red social es mayor que su tiempo de conexión. Esto se modela en el estado ```no_susceptible```.
 
-En tercer lugar, el agente puede ser susceptible a contagiarse directamente por la noticia, en el caso que tenga activo su parámetro ```has_tv```, si es así, se contagia con probabilidad ```prob_tv_spread```. También puede empezar a ser contagiado por los nodos infectados con los que está conectado, o sea, sus vecinos en la red social; en este caso se contagia con probabilidad ```prob_neighbor_spread```. Esto se modela en el estado ```neutral```.
+En tercer lugar, el agente puede ser susceptible a contagiarse directamente por la noticia, en el caso que tenga activo su parámetro ```has_tv```, si es así, se contagia con probabilidad ```prob_tv_spread```. También puede empezar a ser contagiado por los nodos infectados con los que está conectado, o sea, sus vecinos en la red social; en este caso se contagia con probabilidad ```prob_neighbor_spread```. Esto se modela en el estado ```neutral```. 
 
-Ahora, cuando el agente ya fue contagiado, es decir se encuentra en el estado ```infectado```, adquiere otro comportamiento. En este caso, el agente intenta contagiar a todos sus vecinos con probabilidad ```prob_neighbor_spread```. Si transita espontaneamente al estado ```susceptible```, se puede recontagiar con probabilidad ```prob_backsliding```. Esto último significa que el nodo vuelve a participar en la red, y en este caso, muestrea un nodo infectado para responderle (usando como pesos el grado del nodo en la red social), aunque este último no sea vecino del nodo. Por último, el nodo transita al estado ```died``` con probabilidad ```prob_died```. Es importante notar que el agente siempre 'contagia' con su último mensaje, o sea, todas las respuestas de su entonro son dirigidas a su último mensaje.
+Ahora, cuando el agente ya fue contagiado, adquiere otro comportamiento. En este caso, el agente intenta contagiar a todos sus vecinos con probabilidad ```prob_neighbor_spread```. También, se recontagia con probabilidad ```prob_backsliding```, esto último significa que el nodo vuelve a participar en la red, y en este caso, muestrea un nodo infectado para responderle (usando como pesos el grado del nodo en la red social), aunque este último no sea vecino del nodo. Por último, el nodo muere con probabilidad ```prob_died```. Es importante notar que el agente siempre 'contagia' con su último mensaje, o sea, todas las respuestas son dirigidas a su último mensaje.
 
-En el caso de que un agente muera, este deja de participar en la red social.
+En el caso de que un agente muera, este deja de participar en la red social. Esto se modela en el estado ```died```.
 
 Los agentes de red social son 3:
 #### DumbViewer:
@@ -54,7 +54,7 @@ La red de conexiones entre usuarios está generada por un método llamado Baraba
 ## Parámetros a configurar en la simulación
 1. Parámetros por defecto de los agentes: Estos son los parámetros que tendrán todos los agentes, a menos que en alguno especifiques un cambio.
 2. Configuración de los agentes: Acá se configura cada una de las clases de agentes que se crearán. Cada una tiene pesos, ```weight```, que indican qué tan probable es que aparezcan en la red social respecto al resto. Además, se pueden configurar los parámetros por defecto que se deseen para esa clase de agente en particular. Por último, se debe agregar el tipo adecuado correctamente en ```type```.
-3. Configuración del agente de ambiente: Acá se debe configurar cada una de las probabilidades de contagio, los parámetros de la normal de la normal de conexión, los intervalos de tiempo y tanto los parámetros del generados de red social como el método mismo. Nota: Por defecto el simulador siempre hace un step menos que el que se configura
+3. Configuración del agente de ambiente: Acá se debe configurar cada una de las probabilidades de contagio, los parámetros de la normal de conexión, los intervalos de tiempo y tanto los parámetros del generados de red social como el método mismo. Nota: Por defecto el simulador siempre hace un step menos que el que se configura
 4. Probabilidad de responses: Se debe agregar en un diccionario los pesos de cada response para cada tipo de agente (Notar que no deben sumar 1, son solo pesos).
 
 
