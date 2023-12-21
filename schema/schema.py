@@ -111,7 +111,6 @@ class DumbViewer(FSM):
                 return 
             weights_infect = [agent_i.degree_beg for agent_i in possible_agents]
             infecter = random.choices(possible_agents, weights_infect)[0]
-            logging.warning(f"{self['id']} backslided, replying to {infecter['id']}")
 
         # If we are successful:
         self.set_state(self.infected)
