@@ -115,4 +115,8 @@ La librerías externas que se utilizaron fueron (Las versiones son las sugeridas
 6. Pyenchant (>=3.2.2)
  
 ## Ejemplo
-Link: En el [siguiente ejemplo](https://github.com/minsoos/network_simulator/blob/master/run_and_prompts.ipynb)
+Hay un ejemplo listo para usar en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/example/example.ipynb).
+
+Para ejecutar este ejemplo, se necesita:
+1. Un schema, ubicado en ```schema/schema.py```. El esquema por default está en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
+2. Una API KEY, en este caso, para openai. Esta debe estar ubicada en ```parameters.py```, en la variable ```API_KEY```.
