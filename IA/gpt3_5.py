@@ -2,7 +2,7 @@ import openai
 import os
 
 
-def send_prompt(instructions, prompt, engine="gpt-3.5-turbo", temp=0.5, max_tokens=100, top_p=1, frequency_penalty=0, presence_penalty=0, timeout=None):
+def send_prompt_openai(instructions, prompt, engine="gpt-3.5-turbo", temp=0.5, max_tokens=100, top_p=1, frequency_penalty=0, presence_penalty=0, timeout=None):
     respuesta = openai.ChatCompletion.create(
         model=engine,
         messages=[
