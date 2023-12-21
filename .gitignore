@@ -22,3 +22,4 @@ result/
 *try_run.ipynb
 logs.log
 *.DS_STORE
+*Network_Simulator.egg-info
