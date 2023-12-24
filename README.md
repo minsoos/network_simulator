@@ -127,5 +127,6 @@ There's an example that it is ready to use in the [following link](https://githu
 Note that it is necessary to have installed jupyter notebook to run the example, but you can built your own without an .ipynb file.
 
 To run this example, it is needed:
-1. A schema, located in ```schema/schema.py```. Default schema is in the [following link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
-2. An API KEY, in this case, for openai. This should be located in ```parameters.py```, in the variable ```API_KEY```.
+1. Install openai dependencies, with the following command ```pip install network-simulator[openai]```
+2. A schema, located in ```schema/schema.py```. Default schema is in the [following link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
+3. An API KEY, in this case, for openai. This should be located in ```parameters.py```, in the variable ```API_KEY```.
