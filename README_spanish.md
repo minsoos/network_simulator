@@ -76,7 +76,7 @@ Se deben ejecutar las celdas del archivo ```run_and_prompts.ipynb```. Las celdas
 1. Se obtiene el prompt de cada interacción, dándole como parámetro el idioma, la cantidad mínima y máxima de caracteres y la descripción del usuario.
 2. Se define un endpoint para enviar el prompt y obtener una respuesta, lo que será el texto correspondiente a la interacción, en otras palabras, lo que el agente de red 'publica' en la red social.
    1. Inglés: Se sugiere usar ```gpt 3.5```, preimplementada en el módulo IA/gpt3_5
-   2. Español: Se sugiere usar ```LlaMa 3``` con finetuning
+   2. Español: Se sugiere usar ```LlaMa 2``` con finetuning
 3. Se calcula la correctitud de la respuesta (en término de ratio de palabras que no existen), y se intenta corregir con un nuevo prompt en caso de ser necesario (Este paso es opcional, pero asegura que el mensaje esté bien escrito).
 
 ## Visualización del árbol de interacciones
