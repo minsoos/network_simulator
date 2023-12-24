@@ -124,6 +124,7 @@ The external libraries that were used are (versions are suggested):
  
 ## Example
 There's an example that it is ready to use in the [following link](https://github.com/minsoos/network_simulator/blob/master/example/example.ipynb).
+Note that it is necessary to have installed jupyter notebook to run the example, but you can built your own without an .ipynb file.
 
 To run this example, it is needed:
 1. A schema, located in ```schema/schema.py```. Default schema is in the [following link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
