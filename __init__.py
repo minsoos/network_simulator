@@ -2,9 +2,6 @@ from .get_data import (
     get_pivoted_data, 
     get_type_agents)
 
-from .IA import send_prompt_openai
-from .IA import send_prompt_llama2, load_model
-
 
 from .post import (Post, 
                   INSTRUCTIONS_TEMPLATE, 

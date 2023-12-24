@@ -119,5 +119,6 @@ Hay un ejemplo listo para usar en el [siguiente link](https://github.com/minsoos
 Notar que es necesario tener instalado juputer notebook para ejecutar el ejemplo, pero se puede construir un ejemplo propio sin un archivo .ipynb.
 
 Para ejecutar este ejemplo, se necesita:
-1. Un schema, ubicado en ```schema/schema.py```. El esquema por default está en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
-2. Una API KEY, en este caso, para openai. Esta debe estar ubicada en ```parameters.py```, en la variable ```API_KEY```.
+1. Instala las dependencias de openai, con el siguiente comando ```pip install network-simulator[openai]```.
+2. Un schema, ubicado en ```schema/schema.py```. El esquema por default está en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
+3. Una API KEY, en este caso, para openai. Esta debe estar ubicada en ```parameters.py```, en la variable ```API_KEY```.
