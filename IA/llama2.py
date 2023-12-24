@@ -52,7 +52,7 @@ def send_prompt_llama2(instructions, prompt, model, tokenizer, temp = 0.5, max_t
                 num_return_sequences=1,
                 eos_token_id=tokenizer.eos_token_id
                 )
-  final_prompt = get_prompt(prompt, instructions)
+  final_prompt = get_prompt(instructions, prompt)
   llm = HuggingFacePipeline(pipeline = pipe, model_kwargs = {'temperature':temp})
   output = llm(final_prompt)
   return output
