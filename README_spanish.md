@@ -116,6 +116,7 @@ La librerías externas que se utilizaron fueron (Las versiones son las sugeridas
  
 ## Ejemplo
 Hay un ejemplo listo para usar en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/example/example.ipynb).
+Notar que es necesario tener instalado juputer notebook para ejecutar el ejemplo, pero se puede construir un ejemplo propio sin un archivo .ipynb.
 
 Para ejecutar este ejemplo, se necesita:
 1. Un schema, ubicado en ```schema/schema.py```. El esquema por default está en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
