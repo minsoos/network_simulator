@@ -127,10 +127,10 @@ Entre las interacciones, obtiene el primer ancestro que no es repost.
 La librerías externas que se utilizaron fueron (Las versiones son las sugeridas):
 
 1. Python (>=3.6.x)
-2. Anytree (==2.8.0)
-3. Soil (==0.20.7)
+2. Anytree (>=2.8.0)
+3. Soil (>=0.20.7)
 4. Scipy (==1.8.0)
-5. Numpy (==1.24.3)
+5. Numpy (>=1.24.3)
 6. Pyenchant (>=3.2.2)
  
 ## Ejemplo
