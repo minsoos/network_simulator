@@ -1,4 +1,23 @@
 # Network Simulation
+Network Simulator es una librería que puede general data artificial de redes sociales, basado en una noticia como semilla.
+## Instalación
+Network Simulator is in the PyPI repository as 'network-simulator'. To install it, you need to have pip installed. Then, use the following command to install the library
+<div style="text-align:center;">
+  <strong>pip install network-simulator</strong>
+</div>
+
+Para completar la instalación, es necesario una dependencia adicional, ``libenchant``. En Windows, no es necesario instalarla manualmente, pero sí lo es en Linux y macOS. Para esto, se debe usar uno de los siguientes comandos:
+
+### macOS
+<div style="text-align:center;">
+  <strong>brew install enchant</strong>
+</div>
+
+### Linux
+Dependiendo de la distribución, varias librerías pueden estar disponible, por ejemplo, en ubuntu, se puede usar:
+<div style="text-align:center;">
+  <strong>sudo apt install libenchant-2-2</strong>
+</div>
 
 ## Esquema
 El esquema de la simulación se separa en agentes de ambiente y agentes de la red.
