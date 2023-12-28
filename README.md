@@ -99,7 +99,7 @@ Cells in the file ```run_and_prompts.ipynb``` must be executed. They are ready t
 ## LLM model connection
 1. It is gotten the prompt of each interaction, giving as a parameter language, minimum and maximum characters and the user description.
 2. It is defined an endpoint to send the prompt and get a reply, that will be the text in the interaction, in essence, what the network agent post in the social network.
-   1. English: It is suggested to use ```gpt 3.5```, pre-implemented in IA/gpt3_5 module.
+   1. English: It is suggested to use ```gpt 3.5```, pre-implemented in gpt3_5/gpt3_5 module.
    2. Spanish: It is suggested to use finetuned ```LlaMa 2```
 3. The reply correctness is calculated (in terms of the non-existent word ratio). If the correctness is low, the text will try to correct. (This step is optional, but ensure better results)
 
