@@ -2,8 +2,8 @@ import openai
 import os
 
 
-def send_prompt_openai(instructions, prompt, engine="gpt-3.5-turbo", temp=0.5, max_tokens=100, top_p=1, frequency_penalty=0, presence_penalty=0, timeout=None):
-    respuesta = openai.ChatCompletion.create(
+def send_prompt_openai(client, instructions, prompt, engine="gpt-3.5-turbo", temp=0.5, max_tokens=100, top_p=1, frequency_penalty=0, presence_penalty=0, timeout=None):
+    respuesta = client.chat.completions.create(
         model=engine,
         messages=[
             {'role':'system', 'content':instructions},
@@ -16,7 +16,7 @@ def send_prompt_openai(instructions, prompt, engine="gpt-3.5-turbo", temp=0.5, m
         presence_penalty=presence_penalty,
         timeout = timeout
     )
-    return respuesta['choices'][0]["message"]["content"].strip()
+    return respuesta.choices[0].message.content
 
 
 if __name__ == "__main__":
