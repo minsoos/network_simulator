@@ -6,12 +6,14 @@ Network Simulator is in the PyPI repository as 'network-simulator'. To install i
   <strong>pip install network-simulator</strong>
 </div>
 
-To complete the installation, it is needed an additional dependence, ``libenchant``. In Windows, it is not necessary to install it manually, but it is in Linux and macOS, you should use one of the following commands:
+To complete the installation, it is needed an additional dependence, ``libenchant``. In Windows, it is not necessary to install it manually, but it is in Linux, you should use one of the following commands:
+<!---
+
 ### macOS
 <div style="text-align:center;">
   <strong>brew install enchant</strong>
 </div>
-
+-->
 ### Linux
 Depending on the distribution, various libraries could be available, for instance, in ubuntu, you can use:
 <div style="text-align:center;">
