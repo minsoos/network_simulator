@@ -1,4 +1,24 @@
 # Network Simulation
+Network Simulator es una librería que puede general data artificial de redes sociales, basado en una noticia como semilla.
+## Instalación
+Network Simulator is in the PyPI repository as 'network-simulator'. To install it, you need to have pip installed. Then, use the following command to install the library
+<div style="text-align:center;">
+  <strong>pip install network-simulator</strong>
+</div>
+
+Para completar la instalación, es necesario una dependencia adicional, ``libenchant``. En Windows, no es necesario instalarla manualmente, pero sí lo es en Linux. Para esto, se debe usar uno de los siguientes comandos:
+<!---
+
+### macOS
+<div style="text-align:center;">
+  <strong>brew install enchant</strong>
+</div>
+-->
+### Linux
+Dependiendo de la distribución, varias librerías pueden estar disponible, por ejemplo, en ubuntu, se puede usar:
+<div style="text-align:center;">
+  <strong>sudo apt install libenchant-2-2</strong>
+</div>
 
 ## Esquema
 El esquema de la simulación se separa en agentes de ambiente y agentes de la red.
@@ -75,7 +95,7 @@ Se deben ejecutar las celdas del archivo ```run_and_prompts.ipynb```. Las celdas
 ## Conexión con modelo LLM
 1. Se obtiene el prompt de cada interacción, dándole como parámetro el idioma, la cantidad mínima y máxima de caracteres y la descripción del usuario.
 2. Se define un endpoint para enviar el prompt y obtener una respuesta, lo que será el texto correspondiente a la interacción, en otras palabras, lo que el agente de red 'publica' en la red social.
-   1. Inglés: Se sugiere usar ```gpt 3.5```, preimplementada en el módulo IA/gpt3_5
+   1. Inglés: Se sugiere usar ```gpt 3.5```, preimplementada en el módulo gpt3_5/gpt3_5
    2. Español: Se sugiere usar ```LlaMa 2``` con finetuning
 3. Se calcula la correctitud de la respuesta (en término de ratio de palabras que no existen), y se intenta corregir con un nuevo prompt en caso de ser necesario (Este paso es opcional, pero asegura que el mensaje esté bien escrito).
 
@@ -108,10 +128,10 @@ Entre las interacciones, obtiene el primer ancestro que no es repost.
 La librerías externas que se utilizaron fueron (Las versiones son las sugeridas):
 
 1. Python (>=3.6.x)
-2. Anytree (==2.8.0)
-3. Soil (==0.20.7)
+2. Anytree (>=2.8.0)
+3. Soil (>=0.20.7)
 4. Scipy (==1.8.0)
-5. Numpy (==1.24.3)
+5. Numpy (>=1.24.3)
 6. Pyenchant (>=3.2.2)
  
 ## Ejemplo
@@ -119,5 +139,6 @@ Hay un ejemplo listo para usar en el [siguiente link](https://github.com/minsoos
 Notar que es necesario tener instalado juputer notebook para ejecutar el ejemplo, pero se puede construir un ejemplo propio sin un archivo .ipynb.
 
 Para ejecutar este ejemplo, se necesita:
-1. Un schema, ubicado en ```schema/schema.py```. El esquema por default está en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
-2. Una API KEY, en este caso, para openai. Esta debe estar ubicada en ```parameters.py```, en la variable ```API_KEY```.
+1. Instala las dependencias de openai, con el siguiente comando ```pip install network-simulator[openai]```.
+2. Un schema, ubicado en ```schema/schema.py```. El esquema por default está en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
+3. Una API KEY, en este caso, para openai. Esta debe estar ubicada en ```parameters.py```, en la variable ```API_KEY```.

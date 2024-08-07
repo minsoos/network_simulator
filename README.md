@@ -1,4 +1,24 @@
-# Network Simulation
+# Network Simulator
+Network Simulator is a library that can generate artificial social network data, based in a news as a seed.
+## Installation
+Network Simulator is in the PyPI repository as 'network-simulator'. To install it, you need to have pip installed. Then, use the following command to install the library
+<div style="text-align:center;">
+  <strong>pip install network-simulator</strong>
+</div>
+
+To complete the installation, it is needed an additional dependence, ``libenchant``. In Windows, it is not necessary to install it manually, but it is in Linux, you should use one of the following commands:
+<!---
+
+### macOS
+<div style="text-align:center;">
+  <strong>brew install enchant</strong>
+</div>
+-->
+### Linux
+Depending on the distribution, various libraries could be available, for instance, in ubuntu, you can use:
+<div style="text-align:center;">
+  <strong>sudo apt install libenchant-2-2</strong>
+</div>
 
 ## Schema
 The following simulation schema is split into environment agents and network agents.
@@ -81,7 +101,7 @@ Cells in the file ```run_and_prompts.ipynb``` must be executed. They are ready t
 ## LLM model connection
 1. It is gotten the prompt of each interaction, giving as a parameter language, minimum and maximum characters and the user description.
 2. It is defined an endpoint to send the prompt and get a reply, that will be the text in the interaction, in essence, what the network agent post in the social network.
-   1. English: It is suggested to use ```gpt 3.5```, pre-implemented in IA/gpt3_5 module.
+   1. English: It is suggested to use ```gpt 3.5```, pre-implemented in gpt3_5/gpt3_5 module.
    2. Spanish: It is suggested to use finetuned ```LlaMa 2```
 3. The reply correctness is calculated (in terms of the non-existent word ratio). If the correctness is low, the text will try to correct. (This step is optional, but ensure better results)
 
@@ -116,10 +136,10 @@ Among the interactions, it gets the first ancestor that is not a repost.
 The external libraries that were used are (versions are suggested):
 
 1. Python (>=3.6.x)
-2. Anytree (==2.8.0)
+2. Anytree (>=2.8.0)
 3. Soil (==0.20.7)
-4. Scipy (==1.8.0)
-5. Numpy (==1.24.3)
+4. Scipy (>=1.8.0)
+5. Numpy (>=1.24.3)
 6. Pyenchant (>=3.2.2)
  
 ## Example
@@ -127,5 +147,6 @@ There's an example that it is ready to use in the [following link](https://githu
 Note that it is necessary to have installed jupyter notebook to run the example, but you can built your own without an .ipynb file.
 
 To run this example, it is needed:
-1. A schema, located in ```schema/schema.py```. Default schema is in the [following link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
-2. An API KEY, in this case, for openai. This should be located in ```parameters.py```, in the variable ```API_KEY```.
+1. Install openai dependencies, with the following command ```pip install network-simulator[openai]```
+2. A schema, located in ```schema/schema.py```. Default schema is in the [following link](https://github.com/minsoos/network_simulator/blob/master/schema/schema.py).
+3. An API KEY, in this case, for openai. This should be located in ```parameters.py```, in the variable ```API_KEY```.
