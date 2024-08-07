@@ -24,4 +24,4 @@ logs.log
 *.DS_STORE
 *.egg-info
 run_and_prompts.ipynb
-server_user_id.txt
+*server_user_id.txt
