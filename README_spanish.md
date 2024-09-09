@@ -80,7 +80,7 @@ La red de conexiones entre usuarios está generada por un método llamado Baraba
 
 ## Ejecución Simulación :computer:
 
-Se deben ejecutar las celdas del archivo ```run_and_prompts.ipynb```. Las celdas ya están listas, pero lo que se hace básicamente es: 
+Se deben ejecutar las celdas del archivo ```example.ipynb```. Las celdas ya están listas, pero lo que se hace básicamente es: 
 1. Crear el archivo ```.yml``` que indica los parámetros de la simulación.
 2. Ejecutar el comando de soil en la consola, que ejecutará la simulación.
 
@@ -103,7 +103,7 @@ Se deben ejecutar las celdas del archivo ```run_and_prompts.ipynb```. Las celdas
 Se visualializa el árbol en un orden DFS. Esta estructura es totalmente modificable a lo que desee el usuario.
 
 ## Módulos adicionales creados
-1.  ```get_data.py```: Obtiene las funciones que se usan dentro de ```run_and_prompts.ipynb``` para formatear, obtener y limpiar cada uno de los datos que soil entrega como output.
+1.  ```get_data.py```: Obtiene las funciones que se usan dentro de ```example.ipynb``` para formatear, obtener y limpiar cada uno de los datos que soil entrega como output.
 2.  ```ia.py```: Obtiene las funciones que se usan para entregar el prompt y recibir la respuesta del endpoint.
 3.  ```post.py```: Crea la clase Post, que hereda de la clase Node de anytree, que maneja todo lo relacionado a una interacción.
 4.  ```templates.py```: Almacena los templates de prompts que se envían al endpoint.
@@ -134,6 +134,9 @@ La librerías externas que se utilizaron fueron (Las versiones son las sugeridas
 5. Numpy (>=1.24.3)
 6. Pyenchant (>=3.2.2)
  
+## Ejemplo Google Colab
+Hay un ejemplo listo para usar en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/example/example_google_colab.ipynb) en google colab.
+
 ## Ejemplo
 Hay un ejemplo listo para usar en el [siguiente link](https://github.com/minsoos/network_simulator/blob/master/example/example.ipynb).
 Notar que es necesario tener instalado juputer notebook para ejecutar el ejemplo, pero se puede construir un ejemplo propio sin un archivo .ipynb.
