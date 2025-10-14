@@ -146,6 +146,10 @@ The external libraries that were used are (versions are suggested):
 There's an example that it is ready to use in the [following link](https://github.com/minsoos/network_simulator/blob/master/example/example_google_colab.ipynb) in google colab.
 
 ## Example from the paper
-There is an example that is released to reproduce experiments of our paper "Simulating Online Conversations using Agent-Based Modeling and Large Language Models" in the [following link](https://github.com/minsoos/network_simulator/blob/master/example/example.ipynb) 
+There is an example that is released to reproduce experiments of our paper "Simulating conversations on social media with generative 
+agent-based models" in the [following link](https://github.com/minsoos/network_simulator/blob/master/example/example.ipynb) 
 
-Updated: 25 June 2025.
+## Citation
+
+If you will use this code, please cite our paper: Jeon, M., Mendoza, M., Fernández, M., Providel, E., Rodríguez, F., Espina, N., Carvallo, A. & Abeliuk, A. (2025). Simulating conversations on social media with generative agent-based models, EPJ Data Science, Springer. 
+Updated: October 25, 2025.
